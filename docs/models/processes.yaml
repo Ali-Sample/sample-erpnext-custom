@@ -1,0 +1,67 @@
+# Made-up process map for the sandbox. Placeholder only; not RHOS's map.
+# id format: stream/process/step. Process labels match the "Process" options on the Sandbox Delivery project.
+streams:
+  - id: o2c
+    name: Order to cash
+    processes:
+      - id: quote
+        label: O2C Quote
+        steps: [create]
+      - id: sales-order
+        label: O2C Sales order
+        steps: [create, approve]
+      - id: delivery
+        label: O2C Delivery
+        steps: [pick, ship]
+      - id: invoice
+        label: O2C Invoice
+        steps: [create]
+      - id: payment
+        label: O2C Collect payment
+        steps: [receive]
+  - id: p2p
+    name: Procure to pay
+    processes:
+      - id: purchase-order
+        label: P2P Purchase order
+        steps: [create, approve]
+      - id: receipt
+        label: P2P Receive goods
+        steps: [receive]
+      - id: supplier-invoice
+        label: P2P Supplier invoice
+        steps: [match]
+      - id: supplier-payment
+        label: P2P Pay supplier
+        steps: [pay]
+  - id: r2r
+    name: Record to report
+    processes:
+      - id: journal
+        label: R2R Journal entry
+        steps: [post]
+      - id: bank-rec
+        label: R2R Bank reconciliation
+        steps: [match]
+      - id: close
+        label: R2R Month-end close
+        steps: [close]
+
+# Hand-offs between processes: where cross-process defects happen. Each needs an owner.
+handoffs:
+  - from: o2c/sales-order/approve
+    to: o2c/delivery/pick
+    passes: Approved sales order
+    owner: o2c
+  - from: o2c/delivery/ship
+    to: o2c/invoice/create
+    passes: Delivery note
+    owner: o2c
+  - from: o2c/invoice/create
+    to: r2r/journal/post
+    passes: Receivable posting
+    owner: r2r
+  - from: p2p/receipt/receive
+    to: p2p/supplier-invoice/match
+    passes: Purchase receipt
+    owner: p2p

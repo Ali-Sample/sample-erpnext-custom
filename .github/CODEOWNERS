@@ -1,0 +1,6 @@
+# Developers own the app by default; infra owns what changes how it runs or is governed.
+* @Ali-Sample/developers
+/sample_erpnext_custom/hooks.py @Ali-Sample/infra
+/docs/models/ @Ali-Sample/infra
+/Containerfile @Ali-Sample/infra
+/.github/ @Ali-Sample/infra
