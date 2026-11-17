@@ -1,7 +1,7 @@
 # The app on top of the exact ERPNext image RHOS pins (ERPNext 16.37.0, Frappe 16.36.1).
 # Built once in CI; the same image is promoted EXP -> TEST -> PROD.
 # Keep the base digest in step with erpnext-local/versions.env (Dependabot raises PRs for this line).
-FROM frappe/erpnext:v16.37.0@sha256:14217867ba080ed8c64f21d1c0d4ab281c3abb5d96c69d59e0117bc671ee00f2
+FROM frappe/erpnext:v16.55.0@sha256:15a1270f7d8d674de5facd16c3390665a12bd632f5abb846bdd67b61d7461d84
 
 LABEL org.opencontainers.image.source="https://github.com/Ali-Sample/sample-erpnext-custom"
 
