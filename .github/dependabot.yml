@@ -3,6 +3,10 @@ updates:
   - package-ecosystem: docker
     directory: /
     schedule: { interval: weekly }
+    # Follow RHOS, not "latest": only patch and digest updates; minor/major moves are a deliberate decision.
+    ignore:
+      - dependency-name: frappe/erpnext
+        update-types: ["version-update:semver-minor", "version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
     schedule: { interval: weekly }
