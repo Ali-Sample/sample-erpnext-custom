@@ -1,0 +1,13 @@
+[
+ {
+  "doctype": "Custom Field",
+  "name": "Customer-sandbox_reference",
+  "dt": "Customer",
+  "fieldname": "sandbox_reference",
+  "fieldtype": "Data",
+  "label": "Sandbox Reference",
+  "insert_after": "customer_name",
+  "description": "Placeholder field showing how a customisation ships as a fixture.",
+  "module": "Sample ERPNext Custom"
+ }
+]
